@@ -90,6 +90,7 @@ public class ennemiFocus : MonoBehaviour
             audioManager.Instance.MakeHurtSound();
             Destroy(gameObject);
             EventManager.TriggerEvent("KillEnnemi", 1);
+            EventManager.TriggerEvent("AddScorePoint", 100);
         }
     }
 

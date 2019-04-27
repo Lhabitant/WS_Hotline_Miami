@@ -13,12 +13,11 @@ public class ComboManager : MonoBehaviour
         EventManager.StartListening("KillEnnemi", IncreaseCombo);
     }
 
-
-
     private void OnDisable()
     {
         EventManager.StopListening("KillEnnemi", IncreaseCombo);
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,9 +41,10 @@ public class ComboManager : MonoBehaviour
 
     private void IncreaseCombo(float comboValue)
     {
-        Debug.Log("LOOLOLOLOLOLLOLL");
+        Debug.Log("olol " + combo);
         combo += (int)comboValue;
         timer = timeDuration;
         EventManager.TriggerEvent("PuTOnScreenCombo", combo);
+        EventManager.TriggerEvent("AddComboScore", combo);
     }
 }

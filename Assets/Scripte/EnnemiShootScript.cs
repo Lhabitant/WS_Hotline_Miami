@@ -12,6 +12,8 @@ public class EnnemiShootScript : MonoBehaviour
     [SerializeField]
     float coolDown = 1;
     private float timer;
+    [SerializeField]
+    GameObject deathParticle;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +46,12 @@ public class EnnemiShootScript : MonoBehaviour
         if(collision.tag == "bullet")
         {
             audioManager.Instance.MakeHurtSound();
+            Instantiate(deathParticle, transform.position, transform.rotation);
             Destroy(gameObject);
             Destroy(collision);
+            EventManager.TriggerEvent("KillEnnemi", 1);
+            EventManager.TriggerEvent("AddScorePoint", 100);
+
         }
     }
 }

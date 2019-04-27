@@ -10,6 +10,8 @@ public class EnnemiAIState : MonoBehaviour
     public GameObject player;
     private float timer;
     public float timeDuration = 2.0f;
+    [SerializeField]
+    GameObject deathParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,7 @@ public class EnnemiAIState : MonoBehaviour
 
     private void AimPlayer()
     {
-        Debug.Log(timer);
+        //Debug.Log(timer);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.up.normalized, transform.up.normalized);
         if (hit.collider != null)
         {
@@ -48,5 +50,17 @@ public class EnnemiAIState : MonoBehaviour
             transform.up = player.transform.position - transform.position;
         }
        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag  == "bullet")
+        {
+            Instantiate(deathParticle, transform.position, transform.rotation);
+            audioManager.Instance.MakeHurtSound();
+            Destroy(gameObject);
+            EventManager.TriggerEvent("KillEnnemi", 1);
+            EventManager.TriggerEvent("AddScorePoint", 100);
+        }
     }
 }

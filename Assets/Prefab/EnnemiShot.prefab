@@ -199,6 +199,8 @@ MonoBehaviour:
   player: {fileID: 6271782691436065946, guid: 49f49a6c48b9a964fb5a700bc5c76c88, type: 3}
   bullet: {fileID: 5352747418571950075, guid: 06554e0add1b6c14894177f05d0eb9fa, type: 3}
   coolDown: 0
+  deathParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
+    type: 3}
 --- !u!1 &7292403739340224449
 GameObject:
   m_ObjectHideFlags: 0
