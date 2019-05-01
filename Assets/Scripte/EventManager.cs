@@ -37,6 +37,7 @@ public class EventManager : MonoBehaviour
         if(eventDictionary == null)
         {
             eventDictionary = new Dictionary<string, Action<float>>();
+            Debug.Log("Event system activated");
         }
     }
 

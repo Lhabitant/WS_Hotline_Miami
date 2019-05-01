@@ -12,6 +12,7 @@ TagManager:
   - FxTemporaire
   - musicsource
   - Default
+  - End Text Position Menu
   layers:
   - Default
   - TransparentFX

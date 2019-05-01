@@ -8,11 +8,7 @@ public class UIAtttachToPlayer : MonoBehaviour
     public float posY = 100;
     [SerializeField]
     GameObject player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
