@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class PlaySubMenuScript : MonoBehaviour
+public class OptionSubMenu : MonoBehaviour
 {
     public GameObject textPosEnd;
-    private GameObject newGameGO;
-    private GameObject continueGO;
-    private GameObject chaptersGO;
+    private GameObject controlGO;
+    private GameObject visualGO;
+    private GameObject soundsGO;
 
     public float defaultFontSize;
     public float fontSizeMax = 40;
@@ -21,15 +19,15 @@ public class PlaySubMenuScript : MonoBehaviour
     void Start()
     {
         textPosEnd = GameObject.FindWithTag("End Text Position Menu");
-        newGameGO = transform.Find("New Game").gameObject;
-        continueGO = transform.Find("Continue").gameObject;
-        chaptersGO = transform.Find("Chapters").gameObject;
- 
-        defaultFontSize = newGameGO.GetComponent<TextMeshPro>().fontSize;
+        controlGO = transform.Find("Control").gameObject;
+        visualGO = transform.Find("Visual").gameObject;
+        soundsGO = transform.Find("Sounds").gameObject;
 
-        SetAlphaTo0(newGameGO);
-        SetAlphaTo0(continueGO);
-        SetAlphaTo0(chaptersGO);
+        defaultFontSize = controlGO.GetComponent<TextMeshPro>().fontSize;
+
+        SetAlphaTo0(controlGO);
+        SetAlphaTo0(visualGO);
+        SetAlphaTo0(soundsGO);
     }
 
     private void SetAlphaTo0(GameObject button)
@@ -44,9 +42,9 @@ public class PlaySubMenuScript : MonoBehaviour
     void Update()
     {
         SmootlhyAppear();
-        ButtonSystem(newGameGO);
-        ButtonSystem(continueGO);
-        ButtonSystem(chaptersGO);
+        ButtonSystem(controlGO);
+        ButtonSystem(visualGO);
+        ButtonSystem(soundsGO);
     }
 
     private void SmootlhyAppear()
@@ -67,13 +65,24 @@ public class PlaySubMenuScript : MonoBehaviour
 
     private void ButtonSystem(GameObject button)
     {
-        if(button.GetComponent<MouseOnItScript>().mouseOnIt)
+        if (button.GetComponent<MouseOnItScript>().mouseOnIt)
         {
             button.GetComponent<TextMeshPro>().fontSize = fontSizeMax;
-            if(Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0))
             {
-                Debug.Log(button.name);
-                EventManager.TriggerEvent("SwitchToChapters", 1);
+                if (button.name == soundsGO.name)
+                {
+                    Debug.Log(button.name);
+                    EventManager.TriggerEvent("SwitchToOptions", 1);
+                }
+                else if (button.name == controlGO.name)
+                {
+
+                }
+                else if (button.name == visualGO.name)
+                {
+
+                }
             }
         }
         else

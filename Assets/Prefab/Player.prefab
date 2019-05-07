@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 4151354995920649426}
   - component: {fileID: 6188911048684769272}
   - component: {fileID: 3535621220211216036}
-  - component: {fileID: 4800756631355884617}
+  - component: {fileID: 8717414737582312047}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -359,8 +359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7296e0fe5d549bc4da7252dff8718d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoGO: {fileID: 0}
-  comboGO: {fileID: 0}
 --- !u!114 &3535621220211216036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +382,7 @@ MonoBehaviour:
   NormalBulletC: {r: 0, g: 0, b: 0, a: 0}
   BouncingBulletC: {r: 0, g: 0, b: 0, a: 0}
   ExplosionBulletC: {r: 0, g: 0, b: 0, a: 0}
---- !u!61 &4800756631355884617
+--- !u!61 &8717414737582312047
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,7 +406,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!1 &4151354996404579173
 GameObject:

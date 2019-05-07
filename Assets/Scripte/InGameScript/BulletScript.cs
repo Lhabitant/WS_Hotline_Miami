@@ -60,10 +60,12 @@ public class BulletScript : MonoBehaviour {
         else
         {
             GetComponent<Renderer>().material.color = player.GetComponent<BulletManager>().bulletColor;
+
+
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
             Vector3 randomPos = new Vector3(UnityEngine.Random.Range(minValue, maxValue), UnityEngine.Random.Range(minValue, maxValue), 0f);
 
-            normalizeDirection = (worldPos - transform.position + randomPos).normalized;
+            normalizeDirection = Vector3.Normalize(worldPos - transform.position + randomPos);
             //Multiply the normal vector to 10 to set it at 1;
             //normalizeDirection = -(camera.GetComponent<CameraControll>().positionWithoutCursor - transform.position + randomPos).normalized * 10;
         }

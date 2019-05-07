@@ -10,12 +10,14 @@ public class MainCameraSwitchState : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.StartListening("SwitchToChapters", chapters);
+        EventManager.StartListening("SwitchToChapters", Chapters);
+        EventManager.StartListening("SwitchToOptions", Options);
     }
 
     private void OnDisable()
     {
-        EventManager.StopListening("SwitchToChapters", chapters);
+        EventManager.StopListening("SwitchToChapters", Chapters);
+        EventManager.StopListening("SwitchToOptions", Options);
     }
 
     // Start is called before the first frame update
@@ -30,7 +32,7 @@ public class MainCameraSwitchState : MonoBehaviour
         
     }
 
-    private void chapters(float obj)
+    private void Chapters(float obj)
     {
         bool state;
         if(obj == 0)
@@ -43,5 +45,20 @@ public class MainCameraSwitchState : MonoBehaviour
         }
         anim.SetBool("switchToChapter",state);
         Debug.Log("chapters");
+    }
+
+    private void Options(float obj)
+    {
+        bool state;
+        if (obj == 0)
+        {
+            state = false;
+        }
+        else
+        {
+            state = true;
+        }
+        anim.SetBool("switchToOptions", state);
+        Debug.Log("options");
     }
 }

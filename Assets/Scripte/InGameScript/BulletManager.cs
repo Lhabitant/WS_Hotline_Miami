@@ -11,12 +11,15 @@ public class BulletManager : MonoBehaviour {
     GameObject bullet;
     [SerializeField]
     GameObject mainCamera;
+    public GameObject punchObject;
+    public GameObject weapon;
     [HideInInspector]
     public int loaderBullet = 0;
     public int ammo = 6;
+    public int maxAmmo = -1;
     public float canonOut = 1;
+    private PlayerController playerController;
 
-    
     // Bullet Type
     public BulletType bulletType = BulletType.Normal;
     [HideInInspector]
@@ -25,10 +28,12 @@ public class BulletManager : MonoBehaviour {
     public Color NormalBulletC;
     public Color BouncingBulletC;
     public Color ExplosionBulletC;
+    
 
     // Use this for initialization
-    void Start () {
-        
+    void Start ()
+    {
+        playerController = GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
@@ -75,6 +80,29 @@ public class BulletManager : MonoBehaviour {
             */
             Instantiate(bullet, transform.position + transform.up * canonOut, transform.rotation);
             mainCamera.GetComponent<ShakeBehavior>().TriggerShake();
+            playerController.haveAmmo = true;
         }
+        else if (Input.GetMouseButtonDown(0) && ammo == 0)
+        {
+           Punch();
+           playerController.haveAmmo = false;
+        }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            DropWeapon();
+        }
+    }
+
+    private void DropWeapon()
+    {
+        GameObject test = Instantiate(weapon, transform.position + transform.up, transform.rotation);
+        test.GetComponent<WeaponDropedscript>().owner = this.gameObject;
+    }
+
+    private void Punch()
+    {
+        GameObject test = Instantiate(weapon, transform.position + transform.up, transform.rotation);
+        Destroy(test, 0.2f);
     }
 }

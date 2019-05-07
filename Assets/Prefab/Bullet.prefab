@@ -103,7 +103,7 @@ MonoBehaviour:
   hitParticle: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   camera: {fileID: 3026017196956993537, guid: bffa14e060653014b964fb70d1c141e6, type: 3}
   myBulletType: 1
-  bouncingNumber: 2
+  bouncingNumber: 5
   isEnnemiBullet: 0
 --- !u!50 &3029143994624356987
 Rigidbody2D:

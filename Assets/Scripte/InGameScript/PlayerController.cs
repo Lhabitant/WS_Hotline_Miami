@@ -15,6 +15,13 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D body;
     public bool isMoving = false;
     private bool dead = false;
+    public bool haveWeapon = false;
+    public bool haveAmmo = false;
+
+    [Header("Collider Settings")]
+    public Collider2D hitCollider;
+    public Collider2D PunchCollider;
+    public Collider2D collider3;
 
     private UnityAction someListener;
     //Message System
@@ -32,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        hitCollider = GetComponent<BoxCollider2D>();
         body = GetComponent<Rigidbody2D>();
         bulletManager = GetComponent<BulletManager>();
         //gameObject.transform.Find("canon").GetComponent<GameObject>().GetComponent<BulletManager>();
@@ -95,7 +103,7 @@ public class PlayerController : MonoBehaviour {
         Movement.Normalize();
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            body.velocity = Movement * speed; //* Time.deltaTime;
+            body.velocity = Movement * speed;// * Time.deltaTime;
         }
         else { body.velocity = new Vector2(0, 0); }
     }
@@ -122,20 +130,36 @@ public class PlayerController : MonoBehaviour {
         //transform.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,0)));
         transform.up = target.transform.position - transform.position;
 
-        //transform.eulerAngles += new Vector3(0,0,-90);
+        /*
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+        transform.up = direction;
+        */
+        /*
+        Vector3 mouse = Input.mousePosition;
+        Vector3 test = new Vector3(mouse.x, mouse.y, transform.position.y);
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(test);
+        transform.up = mouseWorld - transform.position;
+        transform.eulerAngles = new Vector3(0,0,transform.eulerAngles.z);
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "ennemi" || collision.tag =="ennemibullet" )
+        if (GetComponent<BoxCollider2D>().GetType() == typeof(BoxCollider2D))
         {
-            SetDead(0);
+            if (collision.tag == "ennemi" || collision.tag == "ennemibullet")
+            {
+                SetDead(0);
+            }
+            else if (collision.tag == "ammocontainer")
+            {
+                bulletManager.bulletType = collision.GetComponent<AmmoContainerScript>().bulletType;
+                bulletManager.loaderBullet = collision.GetComponent<AmmoContainerScript>().ammo;
+                bulletManager.ammo = bulletManager.loaderBullet;
+                haveAmmo = true;
+            }
         }
-        else if (collision.tag == "ammocontainer")
-        {
-            bulletManager.bulletType = collision.GetComponent<AmmoContainerScript>().bulletType;
-            bulletManager.loaderBullet = collision.GetComponent<AmmoContainerScript>().ammo;
-            bulletManager.ammo = bulletManager.loaderBullet;
-        }
+
     }
 }

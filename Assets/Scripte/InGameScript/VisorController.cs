@@ -6,8 +6,11 @@ public class VisorController : MonoBehaviour {
 
     [SerializeField] Camera cam;
     public Rigidbody2D body;
+    public bool cursorVisible;
+
     // Use this for initialization
     void Start () {
+        Cursor.visible = cursorVisible;
         body = GetComponent<Rigidbody2D>();
 	}
 	
@@ -22,7 +25,7 @@ public class VisorController : MonoBehaviour {
         //Set the mouse position according to the screen
         Vector3 worldPos = Camera.main.ScreenToWorldPoint( mousePos);
 
-        body.position = new Vector3(worldPos.x,worldPos.y,0);
+        transform.position = new Vector3(worldPos.x,worldPos.y,0);
        
         //Debug.Log("transPos " + transform.position + "bodyPos " + body.position);
     }

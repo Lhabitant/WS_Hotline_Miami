@@ -43,7 +43,7 @@ public class EnnemiShootScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "bullet")
+        if(collision.tag == "bullet" || collision.tag == "punch")
         {
             audioManager.Instance.MakeHurtSound();
             Instantiate(deathParticle, transform.position, transform.rotation);

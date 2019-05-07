@@ -7,6 +7,7 @@ using UnityEngine;
 public class UIOnItManager : MonoBehaviour
 {
     private BulletManager bulletManager;
+    private PlayerController playerController;
     private Transform parentTranform;
     private GameObject ammoGO;
     private GameObject comboGO;
@@ -28,6 +29,7 @@ public class UIOnItManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerController = GetComponent<PlayerController>();
         parentTranform = GetComponentInParent<Transform>();
         bulletManager = GetComponent<BulletManager>();
 
@@ -68,7 +70,14 @@ public class UIOnItManager : MonoBehaviour
     private void SetInformation()
     {
         ammoUI.color = bulletManager.bulletColor;
-        ammoUI.text = bulletManager.ammo.ToString() + "/" + bulletManager.loaderBullet.ToString();
+        if(playerController.haveAmmo == true)
+        {
+            ammoUI.text = bulletManager.ammo.ToString() + "/" + bulletManager.loaderBullet.ToString();
+        }
+        else
+        {
+            ammoUI.text = "Empty";
+        }
         if(combo > 1)
         {
             comboUI.text = "x" + combo.ToString();

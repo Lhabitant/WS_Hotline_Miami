@@ -13,6 +13,7 @@ TagManager:
   - musicsource
   - Default
   - End Text Position Menu
+  - punch
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Obstacle
+  - Punch
   - 
   - 
   - 

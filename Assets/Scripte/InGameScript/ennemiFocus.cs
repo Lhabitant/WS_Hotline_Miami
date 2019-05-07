@@ -82,10 +82,10 @@ public class ennemiFocus : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "bullet")
+        if(collision.tag == "bullet" || collision.tag == "punch")
         {
             Debug.Log("ENNEMI KILL");
-            GetComponent<Collider2D>().enabled = false;
+            //GetComponent<Collider2D>().enabled = false;
             Instantiate(deathParticle, transform.position, transform.rotation);
             audioManager.Instance.MakeHurtSound();
             Destroy(gameObject);
