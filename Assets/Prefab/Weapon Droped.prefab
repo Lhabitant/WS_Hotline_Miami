@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1958338151610921314}
   m_Layer: 0
   m_Name: Weapon Droped
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,11 +95,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBulletType: 0
   isMoving: 1
-  speed: 20.82
-  slowerSpeed: 0.1
   owner: {fileID: 0}
   ammoInside: 0
   maxAmmo: 0
+  speed: 5000
+  slowerSpeed: 1
+  sloWallSpeed: 3
 --- !u!1 &3387432147947432203
 GameObject:
   m_ObjectHideFlags: 0

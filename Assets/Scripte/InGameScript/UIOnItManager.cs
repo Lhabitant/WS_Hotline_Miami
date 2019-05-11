@@ -72,7 +72,7 @@ public class UIOnItManager : MonoBehaviour
         ammoUI.color = bulletManager.bulletColor;
         if(playerController.haveAmmo == true)
         {
-            ammoUI.text = bulletManager.ammo.ToString() + "/" + bulletManager.loaderBullet.ToString();
+            ammoUI.text = bulletManager.ammo.ToString() + "/" + bulletManager.maxAmmo.ToString();
         }
         else
         {

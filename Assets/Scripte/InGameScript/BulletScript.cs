@@ -12,10 +12,10 @@ public class BulletScript : MonoBehaviour {
     float speed = 50;
     [SerializeField]
     float timeLeft = 10f;
-    [SerializeField]
-    float minValue = -2;
-    [SerializeField]
-    float maxValue = 2;
+
+    public float minValue = -2;
+
+    public float maxValue = 2;
 
     [SerializeField]
     GameObject player;
@@ -108,7 +108,10 @@ public class BulletScript : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        bouncing++;
+        if(other.gameObject.tag != "bullet")
+        {
+            bouncing++;
+        }
 
         if (other.collider.gameObject.tag == "ennemi" && isEnnemiBullet == false)
         {
@@ -151,5 +154,7 @@ public class BulletScript : MonoBehaviour {
                     }
             }
         }
+        else if(other.collider.gameObject.tag == "bullet")
+        { }
     }
 }

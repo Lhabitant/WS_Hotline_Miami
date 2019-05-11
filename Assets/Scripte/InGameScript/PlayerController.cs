@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour {
         {
             InputManager();
         }
+        if(haveAmmo == false)
+        {
+            bulletManager.ammo = 0;
+        }
     }
 
     private void restart()
@@ -154,10 +158,28 @@ public class PlayerController : MonoBehaviour {
             }
             else if (collision.tag == "ammocontainer")
             {
+
                 bulletManager.bulletType = collision.GetComponent<AmmoContainerScript>().bulletType;
-                bulletManager.loaderBullet = collision.GetComponent<AmmoContainerScript>().ammo;
-                bulletManager.ammo = bulletManager.loaderBullet;
+                bulletManager.ammo = collision.GetComponent<AmmoContainerScript>().ammo;
+                bulletManager.maxAmmo = collision.GetComponent<AmmoContainerScript>().ammo;
                 haveAmmo = true;
+                haveWeapon = true;
+            }
+            else if(collision.tag == "weapon" ) 
+            {
+                WeaponDropedscript weaponDroped = collision.gameObject.GetComponent<WeaponDropedscript>();
+                EventManager.TriggerEvent("GetWeapon", 1);
+                haveWeapon = true;
+                if(weaponDroped.ammoInside > 0)
+                {
+                    haveAmmo = true;
+                }
+                bulletManager.bulletType = weaponDroped.myBulletType;
+                bulletManager.weaponType = weaponDroped.myWeaponType;
+                bulletManager.ammo = weaponDroped.ammoInside;
+                bulletManager.maxAmmo = weaponDroped.maxAmmo;
+
+                Destroy(collision.gameObject);
             }
         }
 

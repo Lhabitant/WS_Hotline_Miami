@@ -14,6 +14,13 @@ public class EnnemiShootScript : MonoBehaviour
     private float timer;
     [SerializeField]
     GameObject deathParticle;
+
+    [Header("Weapon Information")]
+    public WeaponType myWeaponType;
+    public BulletType myBulletType;
+    public int ammo;
+    public int maxAmmo;
+
     // Start is called before the first frame update
     void Start()
     {

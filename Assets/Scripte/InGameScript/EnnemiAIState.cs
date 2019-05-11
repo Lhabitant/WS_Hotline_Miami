@@ -52,9 +52,9 @@ public class EnnemiAIState : MonoBehaviour
        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag  == "bullet")
+        if(collision.tag  == "bullet" || collision.tag == "punch")
         {
             Instantiate(deathParticle, transform.position, transform.rotation);
             audioManager.Instance.MakeHurtSound();

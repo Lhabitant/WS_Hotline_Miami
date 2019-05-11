@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BulletType { Normal, Rebondissante, Explosion };
+public enum BulletType { None, Normal, Rebondissante, Explosion };
+public enum WeaponType { None, Pistol, Shotgun, Aka, Uzi};
 
 public class BulletManager : MonoBehaviour {
 
@@ -13,18 +14,17 @@ public class BulletManager : MonoBehaviour {
     GameObject mainCamera;
     public GameObject punchObject;
     public GameObject weapon;
-    [HideInInspector]
-    public int loaderBullet = 0;
-    public int ammo = 6;
-    public int maxAmmo = -1;
     public float canonOut = 1;
     private PlayerController playerController;
 
-    // Bullet Type
+    [Header("Weapon Information")]
     public BulletType bulletType = BulletType.Normal;
-    [HideInInspector]
+    public WeaponType weaponType = WeaponType.Pistol;
     public Color bulletColor;
-    //COLOR LIST
+    [Header("Ammo Information")]
+    public int ammo = 6;
+    public int maxAmmo = -1;
+    [Header("Color List")]
     public Color NormalBulletC;
     public Color BouncingBulletC;
     public Color ExplosionBulletC;
@@ -62,25 +62,21 @@ public class BulletManager : MonoBehaviour {
 
     private void shoot()
     {
-        if (Input.GetMouseButtonDown(0) && ammo > 0 )
+        if (Input.GetMouseButtonDown(0) && ammo > 0  && weaponType == WeaponType.Pistol)
         {
-            ammo--;
-            //Debug.Log("PAN");
-            /*
-            Vector3 euler = transform.eulerAngles;
-            euler.z = Random.Range(0f, 360f);
-            transform.eulerAngles = euler;
-            */
-            audioManager.Instance.MakeShotSound();
-            /*
-            for (int i = 0; i <= 10; i++)
-            {
-                Instantiate(bullet, transform.position, transform.rotation);
-            }
-            */
-            Instantiate(bullet, transform.position + transform.up * canonOut, transform.rotation);
-            mainCamera.GetComponent<ShakeBehavior>().TriggerShake();
-            playerController.haveAmmo = true;
+            Pistol();
+        }
+        else if (Input.GetMouseButtonDown(0) && ammo > 0 && weaponType == WeaponType.Shotgun)
+        {
+            Shotgun();
+        }
+        else if (Input.GetMouseButton(0) && ammo > 0 && weaponType == WeaponType.Uzi)
+        {
+            Uzi();
+        }
+        else if (Input.GetMouseButton(0) && ammo > 0 && weaponType == WeaponType.Aka)
+        {
+            Pistol();
         }
         else if (Input.GetMouseButtonDown(0) && ammo == 0)
         {
@@ -88,21 +84,75 @@ public class BulletManager : MonoBehaviour {
            playerController.haveAmmo = false;
         }
 
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(1) && playerController.haveWeapon)
         {
             DropWeapon();
+            playerController.haveWeapon = false;
+            playerController.haveAmmo = false;
         }
+    }
+
+    private void Pistol()
+    {
+        ammo--;
+        audioManager.Instance.MakeShotSound();
+        Instantiate(bullet, transform.position + transform.up * canonOut, transform.rotation);
+        mainCamera.GetComponent<ShakeBehavior>().TriggerShake();
+        playerController.haveAmmo = true;
+    }
+
+    private void Shotgun()
+    {
+        ammo--;
+        audioManager.Instance.MakeShotSound();
+
+        //Debug.Log("PAN");
+ 
+        for (int i = 0; i <= 6; i++)
+        {
+            GameObject test = Instantiate(bullet, transform.position + transform.up * canonOut, transform.rotation);
+            BulletScript script = test.GetComponent<BulletScript>();
+            script.minValue = -3;
+            script.maxValue =  3;
+        }
+
+        mainCamera.GetComponent<ShakeBehavior>().TriggerShake();
+        playerController.haveAmmo = true;
+    }
+
+    private void Uzi()
+    {
+        ammo--;
+        audioManager.Instance.MakeShotSound();
+
+
+        GameObject test = Instantiate(bullet, transform.position + transform.up * canonOut, transform.rotation);
+        BulletScript script = test.GetComponent<BulletScript>();
+        script.minValue = -3;
+        script.maxValue = 3;
+        mainCamera.GetComponent<ShakeBehavior>().TriggerShake();
+        playerController.haveAmmo = true;
     }
 
     private void DropWeapon()
     {
-        GameObject test = Instantiate(weapon, transform.position + transform.up, transform.rotation);
-        test.GetComponent<WeaponDropedscript>().owner = this.gameObject;
+        GameObject test = Instantiate(weapon, transform.position + transform.up * canonOut, transform.rotation);
+        WeaponDropedscript weaponData = test.GetComponent<WeaponDropedscript>();
+        weaponData.owner = this.gameObject;
+        weaponData.myBulletType = this.bulletType;
+        weaponData.myWeaponType = this.weaponType;
+        weaponData.ammoInside = this.ammo;
+        weaponData.maxAmmo = this.maxAmmo;
+
+        bulletType = BulletType.None;
+        weaponType = WeaponType.None;
+        ammo = 0;
+        maxAmmo = 0;
     }
 
     private void Punch()
     {
-        GameObject test = Instantiate(weapon, transform.position + transform.up, transform.rotation);
+        GameObject test = Instantiate(punchObject, transform.position + transform.up, transform.rotation);
         Destroy(test, 0.2f);
     }
 }

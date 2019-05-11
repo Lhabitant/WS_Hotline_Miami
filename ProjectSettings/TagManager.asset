@@ -14,6 +14,7 @@ TagManager:
   - Default
   - End Text Position Menu
   - punch
+  - weapon
   layers:
   - Default
   - TransparentFX
