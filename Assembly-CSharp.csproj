@@ -71,6 +71,7 @@
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\SavingSystem.cs" />
     <Compile Include="Assets\Scripte\EventManager.cs" />
     <Compile Include="Assets\Scripte\InGameScript\AmmoContainerScript.cs" />
     <Compile Include="Assets\Scripte\InGameScript\audioManager.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\Scripte\InGameScript\UIOnItManager.cs" />
     <Compile Include="Assets\Scripte\InGameScript\VisorController.cs" />
     <Compile Include="Assets\Scripte\InGameScript\WeaponDropedscript.cs" />
+    <Compile Include="Assets\Scripte\Level_Manager.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\ChapterSubMenu.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\MainCameraSwitchState.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\MouseOnItScript.cs" />

@@ -41,7 +41,7 @@ public class ComboManager : MonoBehaviour
 
     private void IncreaseCombo(float comboValue)
     {
-        Debug.Log("olol " + combo);
+        //Debug.Log("olol " + combo);
         combo += (int)comboValue;
         timer = timeDuration;
         EventManager.TriggerEvent("PuTOnScreenCombo", combo);

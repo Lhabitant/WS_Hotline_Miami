@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Knockback()
     {
-        if (Input.GetMouseButtonDown(0) && bulletManager.ammo != 0)
+        if (Input.GetMouseButtonDown(0) && haveWeapon & haveAmmo)
         {
             //Debug.Log(-transform.up.normalized * knockBack);
             body.AddForce(-transform.up.normalized * knockBack);

@@ -28,7 +28,8 @@ public class CheckIfEnnemiesAreAlive : MonoBehaviour
         }
         if(Children.Count == 0)
         {
-            Debug.Log("is empty");
+            Debug.Log("CHECKENNEMIALIVE : all ennemies are dead");
+            EventManager.TriggerEvent("SwitchLevel", 1);
         }
         listCount = Children.Count;
     }

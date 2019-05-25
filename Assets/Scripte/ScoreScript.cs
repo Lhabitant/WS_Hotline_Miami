@@ -41,7 +41,7 @@ public class ScoreScript : MonoBehaviour
 
     private void AddScorePoint(float obj)
     {
-        Debug.Log("WE DISPLAY COMBO");
+        //Debug.Log("WE DISPLAY COMBO");
         if (combo >0)
         {
             score += (obj*combo);
@@ -55,7 +55,7 @@ public class ScoreScript : MonoBehaviour
 
     private void AddCombo(float obj)
     {
-        Debug.Log("WE ADD COMBO");
+       // Debug.Log("WE ADD COMBO");
         combo = obj;
     }
 }

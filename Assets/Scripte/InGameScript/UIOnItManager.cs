@@ -50,7 +50,7 @@ public class UIOnItManager : MonoBehaviour
 
     private void AddValueOnCombo(float obj)
     {
-        Debug.Log("ADDVALUE " + combo);
+        //Debug.Log("ADDVALUE " + combo);
         combo = obj;
     }
 
