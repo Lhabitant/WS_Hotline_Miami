@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class EnnemiShootScript : MonoBehaviour
 {
+    [Header("Prefab necessary")]
     [SerializeField]
     GameObject player;
     [SerializeField]
     GameObject bullet;
-    RaycastHit2D raycast;
-    [SerializeField]
-    float coolDown = 1;
-    private float timer;
     [SerializeField]
     GameObject deathParticle;
+
+    [Header("Parameter")]
+    public bool canShot = true;
+    RaycastHit2D raycast;
+    private float timer;
+    [SerializeField]
+    float coolDown = 1;
+    
+    
+    
 
     [Header("Weapon Information")]
     public WeaponType myWeaponType;
@@ -32,20 +39,24 @@ public class EnnemiShootScript : MonoBehaviour
     {
         //raycast = Physics2D.Raycast(transform.position, player.transform.position, Mathf.Infinity);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.up.normalized, transform.up.normalized);
-        if (hit.collider != null)
+        if (canShot)
         {
-            //Debug.Log(hit.collider.name);
-            if(hit.collider.tag == "Player" && timer <= 0)
+            if (hit.collider != null)
             {
-                audioManager.Instance.MakeShotSound();
-                GameObject bulletObject = Instantiate(bullet, transform.position + transform.up.normalized,transform.rotation);
-                //bulletObject.GetComponent<BulletScript>().isEnnemiBullet = true ;
-                timer = coolDown;
+                //Debug.Log(hit.collider.name);
+                if (hit.collider.tag == "Player" && timer <= 0)
+                {
+                    audioManager.Instance.MakeShotSound();
+                    GameObject bulletObject = Instantiate(bullet, transform.position + transform.up.normalized, transform.rotation);
+                    //bulletObject.GetComponent<BulletScript>().isEnnemiBullet = true ;
+                    timer = coolDown;
+                }
             }
         }
-        timer -= Time.deltaTime;
-        //Debug.Log(this.name);
-        transform.up = player.transform.position - transform.position;
+            timer -= Time.deltaTime;
+            //Debug.Log(this.name);
+            transform.up = player.transform.position - transform.position;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -220,6 +220,10 @@ MonoBehaviour:
   coolDown: 0
   deathParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
     type: 3}
+  myWeaponType: 0
+  myBulletType: 0
+  ammo: 0
+  maxAmmo: 0
 --- !u!50 &3062569900364461968
 Rigidbody2D:
   serializedVersion: 4
@@ -254,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 585149159991605282, guid: 09ef2cce27316ee4380ccdee4b0c9bd4, type: 3}
+  ennemiShootScript: {fileID: 0}
 --- !u!1 &7292403739340224449
 GameObject:
   m_ObjectHideFlags: 0

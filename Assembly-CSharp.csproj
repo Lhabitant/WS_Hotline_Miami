@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripte\InGameScript\UIAtttachToPlayer.cs" />
     <Compile Include="Assets\Scripte\InGameScript\UIOnItManager.cs" />
     <Compile Include="Assets\Scripte\InGameScript\VisorController.cs" />
+    <Compile Include="Assets\Scripte\InGameScript\WeaponDropAtDeath.cs" />
     <Compile Include="Assets\Scripte\InGameScript\WeaponDropedscript.cs" />
     <Compile Include="Assets\Scripte\Level_Manager.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\ChapterSubMenu.cs" />
@@ -103,7 +104,6 @@
     <Compile Include="Assets\Scripte\Main Menu Scripte\PlayScripte.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\PlaySubMenuScript.cs" />
     <Compile Include="Assets\Scripte\ScoreScript.cs" />
-    <Compile Include="Assets\WeaponDropAtDeath.cs" />
     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
