@@ -9,10 +9,12 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     public BulletManager bulletManager;
+    [SerializeField] PlayerData playerdate;
     [SerializeField] GameObject target;
     [SerializeField] float speed = 10f;
     [SerializeField] float knockBack = 1f;
     Rigidbody2D body;
+    [Header("Information Settings")]
     public bool isMoving = false;
     private bool dead = false;
     public bool haveWeapon = false;

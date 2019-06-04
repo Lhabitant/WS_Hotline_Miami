@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlaySubMenuScript : MonoBehaviour
 {
@@ -79,11 +80,11 @@ public class PlaySubMenuScript : MonoBehaviour
                 }
                 else if (button.name == newGameGO.name)
                 {
-
+                    SceneManager.LoadScene("SampleScene");
                 }
                 else if (button.name == continueGO.name)
                 {
-
+                    SceneManager.LoadScene("SampleScene");
                 }
             }
         }

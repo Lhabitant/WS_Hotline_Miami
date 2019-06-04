@@ -63,12 +63,14 @@ public class EnnemiShootScript : MonoBehaviour
     {
         if(collision.tag == "bullet" || collision.tag == "punch")
         {
+            WeaponDropAtDeath test = GetComponent<WeaponDropAtDeath>();
+            test.SetDataInWeapon();
             audioManager.Instance.MakeHurtSound();
             Instantiate(deathParticle, transform.position, transform.rotation);
-            Destroy(gameObject);
-            Destroy(collision);
             EventManager.TriggerEvent("KillEnnemi", 1);
             EventManager.TriggerEvent("AddScorePoint", 100);
+            Destroy(gameObject);
+            Destroy(collision);
 
         }
     }

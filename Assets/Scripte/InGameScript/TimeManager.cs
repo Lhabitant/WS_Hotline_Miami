@@ -33,7 +33,7 @@ public class TimeManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = slowTimer;
         }
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }

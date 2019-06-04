@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Level_Manager : MonoBehaviour
 {
     public string[] levelList;
-    public int level = 1;
+    static int level = 1;
 
 
     private void OnEnable()
@@ -56,8 +56,10 @@ public class Level_Manager : MonoBehaviour
         //On prend les 6 premiers charactère 
         if (currentScene.Substring(0, 6) == "Level_")
         {
+            level++;
             Debug.Log("Changement de niveau");
             SceneManager.LoadScene("Level_" + level.ToString());
+            
         }
         else if(currentScene == "SampleScene")
         {

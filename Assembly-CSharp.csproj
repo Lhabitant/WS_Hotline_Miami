@@ -71,6 +71,7 @@
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\Quit.cs" />
     <Compile Include="Assets\SavingSystem.cs" />
     <Compile Include="Assets\Scripte\EventManager.cs" />
     <Compile Include="Assets\Scripte\InGameScript\AmmoContainerScript.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Assets\Scripte\Main Menu Scripte\OptionSubMenu.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\PlayScripte.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\PlaySubMenuScript.cs" />
+    <Compile Include="Assets\Scripte\Other\PlayerData.cs" />
     <Compile Include="Assets\Scripte\ScoreScript.cs" />
     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

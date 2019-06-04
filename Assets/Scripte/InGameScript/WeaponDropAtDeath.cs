@@ -18,15 +18,7 @@ public class WeaponDropAtDeath : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if ((collision.tag == "bullet" && collision.gameObject.GetComponent<BulletScript>().isEnnemiBullet == false) || collision.tag == "punch")
-        {
-            SetDataInWeapon();
-        }
-    }
-
-    private void SetDataInWeapon()
+    public void SetDataInWeapon()
     {
         GameObject test = Instantiate(weapon, transform.position + transform.up, transform.rotation);
         WeaponDropedscript weaponData = test.GetComponent<WeaponDropedscript>();
