@@ -3805,6 +3805,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3026017196956993539, guid: bffa14e060653014b964fb70d1c141e6,
+        type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 1258767596}
     - target: {fileID: 3026017196956993788, guid: bffa14e060653014b964fb70d1c141e6,
         type: 3}
       propertyPath: shakeDurationInput
@@ -3815,11 +3820,6 @@ PrefabInstance:
       propertyPath: shakeMagnitude
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3026017196956993539, guid: bffa14e060653014b964fb70d1c141e6,
-        type: 3}
-      propertyPath: focus
-      value: 
-      objectReference: {fileID: 1258767596}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bffa14e060653014b964fb70d1c141e6, type: 3}
 --- !u!1001 &4092192307911575593
@@ -4078,16 +4078,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.4138971
       objectReference: {fileID: 0}
-    - target: {fileID: 4151354995920649423, guid: 49f49a6c48b9a964fb5a700bc5c76c88,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6188911048684769272, guid: 49f49a6c48b9a964fb5a700bc5c76c88,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3535621220211216036, guid: 49f49a6c48b9a964fb5a700bc5c76c88,
         type: 3}
       propertyPath: canonOut.y
@@ -4193,6 +4183,21 @@ PrefabInstance:
     - target: {fileID: 3535621220211216036, guid: 49f49a6c48b9a964fb5a700bc5c76c88,
         type: 3}
       propertyPath: bulletType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535621220211216036, guid: 49f49a6c48b9a964fb5a700bc5c76c88,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1492355155}
+    - target: {fileID: 4151354995920649423, guid: 49f49a6c48b9a964fb5a700bc5c76c88,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188911048684769272, guid: 49f49a6c48b9a964fb5a700bc5c76c88,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3470185033313610039, guid: 49f49a6c48b9a964fb5a700bc5c76c88,

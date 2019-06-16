@@ -27,7 +27,7 @@ public class ShakeBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TriggerShake();
+        //TriggerShake();
     }
 
     // Update is called once per frame

@@ -62,6 +62,7 @@ public class BulletManager : MonoBehaviour {
 
     private void shoot()
     {
+
         if (Input.GetMouseButtonDown(0) && ammo > 0  && weaponType == WeaponType.Pistol)
         {
             Pistol();

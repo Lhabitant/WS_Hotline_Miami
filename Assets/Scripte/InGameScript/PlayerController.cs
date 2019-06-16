@@ -8,12 +8,13 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
+    public PlayerData playerData;
+
     public BulletManager bulletManager;
-    [SerializeField] PlayerData playerdate;
     [SerializeField] GameObject target;
     [SerializeField] float speed = 10f;
     [SerializeField] float knockBack = 1f;
-    Rigidbody2D body;
+    public Rigidbody2D body;
     [Header("Information Settings")]
     public bool isMoving = false;
     private bool dead = false;
@@ -43,8 +44,10 @@ public class PlayerController : MonoBehaviour {
     {
         hitCollider = GetComponent<BoxCollider2D>();
         body = GetComponent<Rigidbody2D>();
+        //don't work 
+        target = playerData.target;
         bulletManager = GetComponent<BulletManager>();
-        //gameObject.transform.Find("canon").GetComponent<GameObject>().GetComponent<BulletManager>();
+        
 
     }
 	
@@ -86,20 +89,20 @@ public class PlayerController : MonoBehaviour {
     {
         if(Input.GetKey(KeyCode.Z))
         {
-            transform.Translate(Vector3.up * speed, Space.World);
+            transform.Translate(Vector3.up * playerData.speed, Space.World);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.down * speed , Space.World);
+            transform.Translate(Vector3.down * playerData.speed , Space.World);
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.Translate(Vector3.left * speed, Space.World);
+            transform.Translate(Vector3.left * playerData.speed, Space.World);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * speed, Space.World);
+            transform.Translate(Vector3.right * playerData.speed, Space.World);
         }
     }
 
@@ -109,7 +112,7 @@ public class PlayerController : MonoBehaviour {
         Movement.Normalize();
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            body.velocity = Movement * speed;// * Time.deltaTime;
+            body.velocity = Movement * playerData.speed;// * Time.deltaTime;
         }
         else { body.velocity = new Vector2(0, 0); }
     }
@@ -119,7 +122,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && haveWeapon & haveAmmo)
         {
             //Debug.Log(-transform.up.normalized * knockBack);
-            body.AddForce(-transform.up.normalized * knockBack);
+            body.AddForce(-transform.up.normalized * playerData.knockBack);
 
         }
     }
@@ -134,8 +137,12 @@ public class PlayerController : MonoBehaviour {
     {
         // equivalent at 
         //transform.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,0)));
-        transform.up = target.transform.position - transform.position;
 
+        //DONT WORK NEED TO FIX IT /!\
+        //transform.up = playerData.target.transform.position - transform.position;
+        transform.up = target.transform.position - transform.position;
+        
+        
         /*
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
