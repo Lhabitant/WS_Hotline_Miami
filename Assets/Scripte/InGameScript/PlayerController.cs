@@ -44,8 +44,6 @@ public class PlayerController : MonoBehaviour {
     {
         hitCollider = GetComponent<BoxCollider2D>();
         body = GetComponent<Rigidbody2D>();
-        //don't work 
-        target = playerData.target;
         bulletManager = GetComponent<BulletManager>();
         
 
@@ -55,6 +53,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
  
         restart();
+        Knockback();
     }
 
     private void FixedUpdate()
@@ -80,7 +79,7 @@ public class PlayerController : MonoBehaviour {
     void InputManager()
     {
         RotateManager();
-        Knockback();
+       
         //Movement();
         OldMovement();
     }
@@ -113,8 +112,13 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             body.velocity = Movement * playerData.speed;// * Time.deltaTime;
+            isMoving = true;
         }
-        else { body.velocity = new Vector2(0, 0); }
+        else
+        {
+            body.velocity = new Vector2(0, 0);
+            isMoving = false;
+        }
     }
 
     private void Knockback()
@@ -122,7 +126,9 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && haveWeapon & haveAmmo)
         {
             //Debug.Log(-transform.up.normalized * knockBack);
-            body.AddForce(-transform.up.normalized * playerData.knockBack);
+
+            Debug.Log("KNOCK");
+            body.AddForce(-transform.up.normalized * playerData.knockBack, ForceMode2D.Force);
 
         }
     }
@@ -137,12 +143,8 @@ public class PlayerController : MonoBehaviour {
     {
         // equivalent at 
         //transform.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,0)));
-
-        //DONT WORK NEED TO FIX IT /!\
-        //transform.up = playerData.target.transform.position - transform.position;
         transform.up = target.transform.position - transform.position;
-        
-        
+       
         /*
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);

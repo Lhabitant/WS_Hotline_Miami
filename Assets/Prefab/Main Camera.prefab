@@ -112,9 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564e452fb8f79174eb0092f4deb03eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  focus: {fileID: 0}
+  focus: {fileID: 4151354995920649427, guid: 49f49a6c48b9a964fb5a700bc5c76c88, type: 3}
   zPosition: -10
   coeffVisorCamera: 5
+  positionWithoutCursor: {x: 0, y: 0, z: 0}
 --- !u!1 &3026017197809914898
 GameObject:
   m_ObjectHideFlags: 0

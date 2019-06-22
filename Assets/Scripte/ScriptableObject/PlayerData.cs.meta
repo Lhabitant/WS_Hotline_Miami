@@ -3,7 +3,13 @@ guid: bb4902c6cb0d2d8499b660657643b812
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - target: {fileID: 1243005411574694, guid: 7752c0e55b3b0cf4ea2bf12ea101b359, type: 3}
+  - bullet: {fileID: 1631333511559632, guid: 0c7545061132cad4eaf79bd4c974c537, type: 3}
+  - mainCamera: {fileID: 3026017196956993537, guid: bffa14e060653014b964fb70d1c141e6,
+      type: 3}
+  - Punch: {fileID: 5178362056996167790, guid: 7d287baeb84c31647b60f15e9815b8fb, type: 3}
+  - weapon: {fileID: 585149159991605282, guid: 09ef2cce27316ee4380ccdee4b0c9bd4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

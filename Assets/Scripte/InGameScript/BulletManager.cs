@@ -8,6 +8,8 @@ public enum WeaponType { None, Pistol, Shotgun, Aka, Uzi};
 
 public class BulletManager : MonoBehaviour {
 
+    public PlayerData playerData;
+
     [SerializeField]
     GameObject bullet;
     [SerializeField]
@@ -97,7 +99,7 @@ public class BulletManager : MonoBehaviour {
     {
         ammo--;
         audioManager.Instance.MakeShotSound();
-        Instantiate(bullet, transform.position + transform.up * canonOut, transform.rotation);
+        Instantiate(playerData.bullet, transform.position + transform.up * canonOut, transform.rotation);
         mainCamera.GetComponent<ShakeBehavior>().TriggerShake();
         playerController.haveAmmo = true;
     }
@@ -111,7 +113,7 @@ public class BulletManager : MonoBehaviour {
  
         for (int i = 0; i <= 6; i++)
         {
-            GameObject test = Instantiate(bullet, transform.position + transform.up * canonOut, transform.rotation);
+            GameObject test = Instantiate(playerData.bullet, transform.position + transform.up * canonOut, transform.rotation);
             BulletScript script = test.GetComponent<BulletScript>();
             script.minValue = -3;
             script.maxValue =  3;
@@ -127,7 +129,7 @@ public class BulletManager : MonoBehaviour {
         audioManager.Instance.MakeShotSound();
 
 
-        GameObject test = Instantiate(bullet, transform.position + transform.up * canonOut, transform.rotation);
+        GameObject test = Instantiate(playerData.bullet, transform.position + transform.up * canonOut, transform.rotation);
         BulletScript script = test.GetComponent<BulletScript>();
         script.minValue = -3;
         script.maxValue = 3;
@@ -137,7 +139,7 @@ public class BulletManager : MonoBehaviour {
 
     private void DropWeapon()
     {
-        GameObject test = Instantiate(weapon, transform.position + transform.up * canonOut, transform.rotation);
+        GameObject test = Instantiate(playerData.weapon, transform.position + transform.up * canonOut, transform.rotation);
         WeaponDropedscript weaponData = test.GetComponent<WeaponDropedscript>();
         weaponData.owner = this.gameObject;
         weaponData.myBulletType = this.bulletType;
@@ -153,7 +155,7 @@ public class BulletManager : MonoBehaviour {
 
     private void Punch()
     {
-        GameObject test = Instantiate(punchObject, transform.position + transform.up, transform.rotation);
+        GameObject test = Instantiate(playerData.Punch, transform.position + transform.up, transform.rotation);
         Destroy(test, 0.2f);
     }
 }

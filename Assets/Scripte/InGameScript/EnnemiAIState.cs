@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnnemiAIState : MonoBehaviour
 {
     private AIPath AIScript;
+    private AIDestinationSetter aIDestinationSetter;
     public GameObject player;
     private float timer;
     public float timeDuration = 2.0f;
@@ -16,7 +17,9 @@ public class EnnemiAIState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         AIScript = GetComponent<AIPath>();
+        aIDestinationSetter = GetComponent<AIDestinationSetter>();
         AIScript.enabled = false;
 
     }
@@ -38,6 +41,7 @@ public class EnnemiAIState : MonoBehaviour
             {
                 AIScript.enabled = true;
                 timer = timeDuration;
+                aIDestinationSetter.target = player.transform;
             }
             else
             {

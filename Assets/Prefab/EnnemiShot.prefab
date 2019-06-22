@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 7867972567183092205}
   - component: {fileID: 3062569900364461968}
   - component: {fileID: 1278183304243801468}
+  - component: {fileID: 83016851928778902}
   m_Layer: 0
   m_Name: EnnemiShot
   m_TagString: ennemi
@@ -217,9 +218,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6271782691436065946, guid: 49f49a6c48b9a964fb5a700bc5c76c88, type: 3}
   bullet: {fileID: 5352747418571950075, guid: 06554e0add1b6c14894177f05d0eb9fa, type: 3}
-  coolDown: 0
   deathParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
     type: 3}
+  canShot: 1
+  coolDown: 0
   myWeaponType: 0
   myBulletType: 0
   ammo: 0
@@ -259,6 +261,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 585149159991605282, guid: 09ef2cce27316ee4380ccdee4b0c9bd4, type: 3}
   ennemiShootScript: {fileID: 0}
+--- !u!114 &83016851928778902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923514295330656006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fedf48160733f143aaa9a45d775c5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionParticle: {fileID: 198194127032045410, guid: 46876a2780737ec45a19d62f88e5ce56,
+    type: 3}
+  deathParticle: {fileID: 2115382076224240972, guid: e1272c392a68764409230ccad7b8f913,
+    type: 3}
 --- !u!1 &7292403739340224449
 GameObject:
   m_ObjectHideFlags: 0

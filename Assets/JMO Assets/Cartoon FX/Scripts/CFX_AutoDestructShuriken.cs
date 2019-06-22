@@ -7,7 +7,7 @@ using System.Collections;
 // Check is performed every 0.5 seconds to not query the particle system's state every frame.
 // (only deactivates the object if the OnlyDeactivate flag is set, automatically used with CFX Spawn System)
 
-[RequireComponent(typeof(ParticleSystem))]
+[RequireComponent(typeof(UnityEngine.ParticleSystem))]
 public class CFX_AutoDestructShuriken : MonoBehaviour
 {
 	// If true, deactivate the object instead of destroying it
@@ -20,7 +20,7 @@ public class CFX_AutoDestructShuriken : MonoBehaviour
 	
 	IEnumerator CheckIfAlive ()
 	{
-		ParticleSystem ps = this.GetComponent<ParticleSystem>();
+        UnityEngine.ParticleSystem ps = this.GetComponent<UnityEngine.ParticleSystem>();
 		
 		while(true && ps != null)
 		{

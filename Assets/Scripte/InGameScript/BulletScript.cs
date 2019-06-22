@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
 
-
     private BulletManager bulletManager;
-    private Vector3 normalizeDirection;
+    [HideInInspector]
+    public Vector3 normalizeDirection;
     [SerializeField]
     float speed = 50;
     [SerializeField]
@@ -51,8 +51,6 @@ public class BulletScript : MonoBehaviour {
     {
         if (isEnnemiBullet)
         {
-            //Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(player.transform.position.x, player.transform.position.y, 10f));
-
             normalizeDirection = (player.transform.position - transform.position).normalized;
             //Debug.Log(player.transform.position);
         }
@@ -74,7 +72,6 @@ public class BulletScript : MonoBehaviour {
         //Debug.Log(normalizeDirection);
     }
 
-    // Update is called once per frame
     void Update()
     {
         Destroy(gameObject, 5);
@@ -108,7 +105,8 @@ public class BulletScript : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag != "bullet")
+        //ParticleEmitter(other);
+        if (other.gameObject.tag != "bullet")
         {
             bouncing++;
         }
@@ -156,5 +154,16 @@ public class BulletScript : MonoBehaviour {
         }
         else if(other.collider.gameObject.tag == "bullet")
         { }
+    }
+
+    private void ParticleEmitter(Collision2D other)
+    {
+       /* ParticlePhysicsExtensions.GetCollisionEvents(particleLauncher, other, collisionEvents);
+
+        for (int i = 0; i < collisionEvents.Count; i++)
+        {
+            splatDecalPool.ParticleHit(collisionEvents[i], particleColorGradient);
+            EmitAtLocation(collisionEvents[i]);
+        }*/
     }
 }

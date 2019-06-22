@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    public PlayerData playerData;
     public float slowTimer;
     private bool isMoving = false;
     private Rigidbody2D body;
@@ -33,7 +34,7 @@ public class TimeManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = slowTimer;
+            Time.timeScale = playerData.slowTimer;
         }
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }

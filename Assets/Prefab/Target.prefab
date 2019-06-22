@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 114917168976945226}
   - component: {fileID: 258817815218809112}
   m_Layer: 0
-  m_Name: Visor
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   body: {fileID: 0}
+  cursorVisible: 0
 --- !u!50 &258817815218809112
 Rigidbody2D:
   serializedVersion: 4

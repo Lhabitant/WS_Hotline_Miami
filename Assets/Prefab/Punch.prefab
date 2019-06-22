@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4407700395305080749}
   - component: {fileID: 4395589816122674083}
   - component: {fileID: 5187101744080949664}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: bullet
   m_Icon: {fileID: 0}
@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 1713903590559149696}
   - component: {fileID: 8849573355495216131}
   - component: {fileID: 8100238460445778005}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Punch
-  m_TagString: bullet
+  m_TagString: punch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

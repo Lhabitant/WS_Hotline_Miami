@@ -9,8 +9,7 @@ public class EnnemiShootScript : MonoBehaviour
     GameObject player;
     [SerializeField]
     GameObject bullet;
-    [SerializeField]
-    GameObject deathParticle;
+
 
     [Header("Parameter")]
     public bool canShot = true;
@@ -31,7 +30,7 @@ public class EnnemiShootScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -63,12 +62,20 @@ public class EnnemiShootScript : MonoBehaviour
     {
         if(collision.tag == "bullet" || collision.tag == "punch")
         {
+            //We put data in a prefab
             WeaponDropAtDeath test = GetComponent<WeaponDropAtDeath>();
             test.SetDataInWeapon();
-            audioManager.Instance.MakeHurtSound();
-            Instantiate(deathParticle, transform.position, transform.rotation);
+            //Get direction of hit bullet
+            Vector3 bulletD = collision.gameObject.GetComponent<BulletScript>().normalizeDirection;            
+
+            //Event System
             EventManager.TriggerEvent("KillEnnemi", 1);
             EventManager.TriggerEvent("AddScorePoint", 100);
+            //Particle System
+            GetComponent<ParticleSystemManager>().InstantiateDeathParticle(bulletD);
+            //Sound System
+            audioManager.Instance.MakeHurtSound();
+            //Destroy self
             Destroy(gameObject);
             Destroy(collision);
 
