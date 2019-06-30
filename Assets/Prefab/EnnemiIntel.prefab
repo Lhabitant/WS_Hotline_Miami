@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 7861795682983493016}
   - component: {fileID: 7861795682983493021}
   - component: {fileID: 7861795682983493020}
+  - component: {fileID: 8174444282858580336}
   - component: {fileID: 7861795682983493023}
   - component: {fileID: 8148387715445165593}
   - component: {fileID: 3674382847936569543}
@@ -208,6 +209,22 @@ MonoBehaviour:
   player: {fileID: 0}
   timeDuration: 10
   deathParticle: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
+    type: 3}
+--- !u!114 &8174444282858580336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861795682983493017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fedf48160733f143aaa9a45d775c5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionParticle: {fileID: 198194127032045410, guid: 46876a2780737ec45a19d62f88e5ce56,
+    type: 3}
+  deathParticle: {fileID: 2115382076224240972, guid: e1272c392a68764409230ccad7b8f913,
     type: 3}
 --- !u!61 &7861795682983493023
 BoxCollider2D:

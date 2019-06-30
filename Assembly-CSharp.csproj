@@ -72,6 +72,7 @@
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\ParticleBulletManager.cs" />
     <Compile Include="Assets\ParticleSystemManager.cs" />
     <Compile Include="Assets\Quit.cs" />
     <Compile Include="Assets\SavingSystem.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Assets\Scripte\ScoreScript.cs" />
     <Compile Include="Assets\Scripte\ScriptableObject\PlayerData.cs" />
     <Compile Include="Assets\Scripte\Singleton\DataAccess.cs" />
+    <Compile Include="Assets\TraceGetParentTransform.cs" />
     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

@@ -139,7 +139,7 @@ public class BulletManager : MonoBehaviour {
 
     private void DropWeapon()
     {
-        GameObject test = Instantiate(playerData.weapon, transform.position + transform.up * canonOut, transform.rotation);
+        GameObject test = Instantiate(playerData.weapon, transform.position + transform.up * canonOut * 2, transform.rotation);
         WeaponDropedscript weaponData = test.GetComponent<WeaponDropedscript>();
         weaponData.owner = this.gameObject;
         weaponData.myBulletType = this.bulletType;

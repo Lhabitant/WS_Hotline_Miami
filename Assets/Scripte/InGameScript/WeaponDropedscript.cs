@@ -63,12 +63,19 @@ public class WeaponDropedscript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        normalizeDirection = Vector2.Reflect(normalizeDirection, collision.contacts[0].normal);
-        if(collision.gameObject.GetComponent<Rigidbody2D>() != null)
+        if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-normalizeDirection * speed * Time.deltaTime);
-            
+            speed = 0;
         }
-        speed = speed / sloWallSpeed;
+        else
+        {
+            normalizeDirection = Vector2.Reflect(normalizeDirection, collision.contacts[0].normal);
+            if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-normalizeDirection * speed * Time.deltaTime);
+
+            }
+            speed = speed / sloWallSpeed;
+        }
     }
 }

@@ -60,11 +60,17 @@ public class EnnemiAIState : MonoBehaviour
     {
         if(collision.tag  == "bullet" || collision.tag == "punch")
         {
-            Instantiate(deathParticle, transform.position, transform.rotation);
+            //Get direction of hit bullet
+            Vector3 bulletD = collision.gameObject.GetComponent<BulletScript>().normalizeDirection;
+            //Particle System
+            GetComponent<ParticleSystemManager>().InstantiateDeathParticle(bulletD);
+            //Soundsystem
             audioManager.Instance.MakeHurtSound();
-            Destroy(gameObject);
+            //Event system
             EventManager.TriggerEvent("KillEnnemi", 1);
             EventManager.TriggerEvent("AddScorePoint", 100);
+
+            Destroy(gameObject);
         }
     }
 }

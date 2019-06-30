@@ -22,9 +22,7 @@ public class BulletScript : MonoBehaviour {
     public GameObject visor;
     [SerializeField]
     GameObject spawnParticle;
-    [SerializeField]
-    GameObject hitParticle;
-    public GameObject camera;
+    //public GameObject camera;
 
     public BulletType myBulletType = BulletType.Normal;
     public int bouncingNumber = 2;
@@ -37,10 +35,14 @@ public class BulletScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        //trace
+        GetComponent<ParticleBulletManager>().InstantiateTraceParticle();
+
+
         boxcollider = GetComponent<BoxCollider2D>();
         Instantiate(spawnParticle, transform.position, transform.rotation);
         body = GetComponent<Rigidbody2D>();
-        camera = GameObject.Find("Main Camera");
+        //camera = GameObject.Find("Main Camera");
         player = GameObject.Find("Player");
         myBulletType = player.GetComponent<BulletManager>().bulletType;
         GetComponent<Renderer>().material.SetColor("_EmissionColor",player.GetComponent<BulletManager>().bulletColor);
@@ -133,7 +135,7 @@ public class BulletScript : MonoBehaviour {
             {
                 case BulletType.Normal:
                     {
-                        Instantiate(hitParticle, transform.position, transform.rotation);
+                        GetComponent<ParticleBulletManager>().InstantiateImpactParticle();
                         Destroy(gameObject);
                         break;
                     }
@@ -146,7 +148,7 @@ public class BulletScript : MonoBehaviour {
                     {
                         //Debug.Log("PIG");
                         boxcollider.size = new Vector2(20,20);
-                        Instantiate(hitParticle, transform.position, transform.rotation);
+                        GetComponent<ParticleBulletManager>().InstantiateImpactParticle();
                         Destroy(gameObject);
                         break;
                     }

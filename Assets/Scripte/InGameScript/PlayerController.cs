@@ -169,14 +169,14 @@ public class PlayerController : MonoBehaviour {
             }
             else if (collision.tag == "ammocontainer")
             {
-
+                bulletManager.weaponType = collision.GetComponent<AmmoContainerScript>().weaponType;
                 bulletManager.bulletType = collision.GetComponent<AmmoContainerScript>().bulletType;
                 bulletManager.ammo = collision.GetComponent<AmmoContainerScript>().ammo;
                 bulletManager.maxAmmo = collision.GetComponent<AmmoContainerScript>().ammo;
                 haveAmmo = true;
                 haveWeapon = true;
             }
-            else if(collision.tag == "weapon" ) 
+            else if ((collision.tag == "weapon") && (haveWeapon == false)) 
             {
                 WeaponDropedscript weaponDroped = collision.gameObject.GetComponent<WeaponDropedscript>();
                 EventManager.TriggerEvent("GetWeapon", 1);

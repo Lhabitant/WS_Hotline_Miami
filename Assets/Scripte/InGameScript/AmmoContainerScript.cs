@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class AmmoContainerScript : MonoBehaviour
 {
-    
-    //Enum is in bullet manager
-    public BulletType bulletType = BulletType.Normal;
 
+    //Enum is in bullet manager
+    [Header("Property of the weapon")]
+    public WeaponType weaponType = WeaponType.Pistol;
+    public BulletType bulletType = BulletType.Normal;
     public int ammo = 6;
     // Start is called before the first frame update
     void Start()
