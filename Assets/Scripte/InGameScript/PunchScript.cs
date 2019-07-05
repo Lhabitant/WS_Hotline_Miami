@@ -20,8 +20,9 @@ public class PunchScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "ennemi")
         {
-            //Destroy(collision.gameObject);
-            Debug.Log("qmhxomihs,hsuhfz");
+            Destroy(this.gameObject);
+            //Debug.Log("qmhxomihs,hsuhfz");
         }
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 }

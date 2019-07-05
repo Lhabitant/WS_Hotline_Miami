@@ -385,6 +385,7 @@ MonoBehaviour:
     type: 3}
   punchObject: {fileID: 5178362056996167790, guid: 7d287baeb84c31647b60f15e9815b8fb,
     type: 3}
+  punchDuration: 0.1
   weapon: {fileID: 585149159991605282, guid: 09ef2cce27316ee4380ccdee4b0c9bd4, type: 3}
   canonOut: 1
   bulletType: 0

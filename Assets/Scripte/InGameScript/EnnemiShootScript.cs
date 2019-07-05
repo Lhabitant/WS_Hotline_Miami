@@ -17,9 +17,11 @@ public class EnnemiShootScript : MonoBehaviour
     private float timer;
     [SerializeField]
     float coolDown = 1;
-    
-    
-    
+
+    private bool haveCollidedFlag = false;
+
+
+
 
     [Header("Weapon Information")]
     public WeaponType myWeaponType;
@@ -33,6 +35,31 @@ public class EnnemiShootScript : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
+    private void FixedUpdate()
+    {
+        /*
+         * Obliger de passer par un FixedUpdate pour éviter d'instensier deux objets à la mort
+         * Par exemple le drop d'arme
+         */
+        DeathImpact();
+    }
+
+    void DeathImpact()
+    {
+        if (haveCollidedFlag)
+        {
+            //Event System
+            EventManager.TriggerEvent("KillEnnemi", 1);
+            EventManager.TriggerEvent("AddScorePoint", 100);
+            //Sound System
+            audioManager.Instance.MakeHurtSound();
+            //We put data in a prefab
+            WeaponDropAtDeath test = GetComponent<WeaponDropAtDeath>();
+            test.SetDataInWeapon();
+            //Destroy self
+            Destroy(this.gameObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -62,23 +89,15 @@ public class EnnemiShootScript : MonoBehaviour
     {
         if(collision.tag == "bullet" || collision.tag == "punch")
         {
-            //We put data in a prefab
-            WeaponDropAtDeath test = GetComponent<WeaponDropAtDeath>();
-            test.SetDataInWeapon();
             //Get direction of hit bullet
-            Vector3 bulletD = collision.gameObject.GetComponent<BulletScript>().normalizeDirection;            
-
-            //Event System
-            EventManager.TriggerEvent("KillEnnemi", 1);
-            EventManager.TriggerEvent("AddScorePoint", 100);
-            //Particle System
-            GetComponent<ParticleSystemManager>().InstantiateDeathParticle(bulletD);
-            //Sound System
-            audioManager.Instance.MakeHurtSound();
-            //Destroy self
-            Destroy(gameObject);
-            Destroy(collision);
-
+            if (collision.tag == "bullet")
+            {
+                Vector3 bulletD = collision.gameObject.GetComponent<BulletScript>().normalizeDirection;
+                //Particle System
+                GetComponent<ParticleSystemManager>().InstantiateDeathParticle(bulletD);
+            }
+            haveCollidedFlag = true;
+            //Debug.Log("IAM DEAD NOT BIG SURPRISE");
         }
     }
 }

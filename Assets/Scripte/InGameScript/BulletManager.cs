@@ -15,6 +15,7 @@ public class BulletManager : MonoBehaviour {
     [SerializeField]
     GameObject mainCamera;
     public GameObject punchObject;
+    public float punchDuration = 0.0f;
     public GameObject weapon;
     public float canonOut = 1;
     private PlayerController playerController;
@@ -31,6 +32,7 @@ public class BulletManager : MonoBehaviour {
     public Color BouncingBulletC;
     public Color ExplosionBulletC;
     
+
 
     // Use this for initialization
     void Start ()
@@ -156,6 +158,6 @@ public class BulletManager : MonoBehaviour {
     private void Punch()
     {
         GameObject test = Instantiate(playerData.Punch, transform.position + transform.up, transform.rotation);
-        Destroy(test, 0.2f);
+        Destroy(test, punchDuration);
     }
 }
