@@ -80,11 +80,11 @@ public class PlaySubMenuScript : MonoBehaviour
                 }
                 else if (button.name == newGameGO.name)
                 {
-                    SceneManager.LoadScene("SampleScene");
+                    SceneManager.LoadScene("Level_4");
                 }
                 else if (button.name == continueGO.name)
                 {
-                    SceneManager.LoadScene("SampleScene");
+                    SceneManager.LoadScene("Level_4");
                 }
             }
         }

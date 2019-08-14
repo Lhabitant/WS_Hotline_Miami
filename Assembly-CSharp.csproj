@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\InputSubMenu.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
@@ -72,6 +73,8 @@
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\KeyBindScript.cs" />
+    <Compile Include="Assets\OnClickOnIt.cs" />
     <Compile Include="Assets\ParticleBulletManager.cs" />
     <Compile Include="Assets\ParticleSystemManager.cs" />
     <Compile Include="Assets\Quit.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Assets\Scripte\InGameScript\WeaponDropAtDeath.cs" />
     <Compile Include="Assets\Scripte\InGameScript\WeaponDropedscript.cs" />
     <Compile Include="Assets\Scripte\Level_Manager.cs" />
+    <Compile Include="Assets\Scripte\Main Menu Scripte\AudioSubMenu.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\ChapterSubMenu.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\MainCameraSwitchState.cs" />
     <Compile Include="Assets\Scripte\Main Menu Scripte\MouseOnItScript.cs" />

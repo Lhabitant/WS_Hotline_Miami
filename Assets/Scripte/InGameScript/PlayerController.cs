@@ -62,11 +62,10 @@ public class PlayerController : MonoBehaviour {
         {
             InputManager();
         }
-        if(haveAmmo == false)
-        {
-            bulletManager.ammo = 0;
-        }
+        AmmoSystem();
     }
+
+
 
     private void restart()
     {
@@ -80,29 +79,31 @@ public class PlayerController : MonoBehaviour {
     {
         RotateManager();
        
-        //Movement();
+        Movement();
         OldMovement();
     }
 
     private void Movement()
     {
-        if(Input.GetKey(KeyCode.Z))
+        Vector2 Movement = new Vector2(0, 0);
+        if(Input.GetButton("Up"))
         {
-            transform.Translate(Vector3.up * playerData.speed, Space.World);
+            Movement = Vector2.up;
+        }
+        if (Input.GetButton("Down"))
+        {
+            Movement = Vector2.down;
+        }
+        if (Input.GetButton("Left"))
+        {
+            Movement = Vector2.left;
+        }
+        if (Input.GetButton("Right"))
+        {
+            Movement = Vector2.right;
         }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.down * playerData.speed , Space.World);
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            transform.Translate(Vector3.left * playerData.speed, Space.World);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector3.right * playerData.speed, Space.World);
-        }
+        body.velocity = Movement.normalized * playerData.speed;
     }
 
     private void OldMovement()
@@ -118,6 +119,18 @@ public class PlayerController : MonoBehaviour {
         {
             body.velocity = new Vector2(0, 0);
             isMoving = false;
+        }
+    }
+
+    private void AmmoSystem()
+    {
+        if (haveAmmo == false)
+        {
+            bulletManager.ammo = 0;
+        }
+        if(GetComponent<BulletManager>().ammo == 0)
+        {
+            haveAmmo = false;
         }
     }
 

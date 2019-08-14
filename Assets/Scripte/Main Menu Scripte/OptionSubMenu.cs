@@ -73,15 +73,17 @@ public class OptionSubMenu : MonoBehaviour
                 if (button.name == soundsGO.name)
                 {
                     Debug.Log(button.name);
-                    EventManager.TriggerEvent("SwitchToOptions", 1);
+                    EventManager.TriggerEvent("SwitchToSounds", 1);
                 }
                 else if (button.name == controlGO.name)
                 {
-
+                    Debug.Log(button.name);
+                    EventManager.TriggerEvent("SwitchToInputs", 1);
                 }
                 else if (button.name == visualGO.name)
                 {
-
+                    Debug.Log(button.name);
+                    EventManager.TriggerEvent("SwitchToOptions", 1);
                 }
             }
         }

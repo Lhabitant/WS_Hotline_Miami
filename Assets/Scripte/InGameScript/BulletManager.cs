@@ -67,29 +67,29 @@ public class BulletManager : MonoBehaviour {
     private void shoot()
     {
 
-        if (Input.GetMouseButtonDown(0) && ammo > 0  && weaponType == WeaponType.Pistol)
+        if (Input.GetButtonDown("Fire1") && ammo > 0  && weaponType == WeaponType.Pistol)
         {
             Pistol();
         }
-        else if (Input.GetMouseButtonDown(0) && ammo > 0 && weaponType == WeaponType.Shotgun)
+        else if (Input.GetButtonDown("Fire1") && ammo > 0 && weaponType == WeaponType.Shotgun)
         {
             Shotgun();
         }
-        else if (Input.GetMouseButton(0) && ammo > 0 && weaponType == WeaponType.Uzi)
+        else if (Input.GetButtonDown("Fire1") && ammo > 0 && weaponType == WeaponType.Uzi)
         {
             Uzi();
         }
-        else if (Input.GetMouseButton(0) && ammo > 0 && weaponType == WeaponType.Aka)
+        else if (Input.GetButtonDown("Fire1") && ammo > 0 && weaponType == WeaponType.Aka)
         {
             Pistol();
         }
-        else if (Input.GetMouseButtonDown(0) && ammo == 0)
+        else if (Input.GetButtonDown("Fire1") && ammo == 0)
         {
            Punch();
-           playerController.haveAmmo = false;
+ 
         }
 
-        if(Input.GetMouseButtonDown(1) && playerController.haveWeapon)
+        if(Input.GetButtonDown("Fire2") && playerController.haveWeapon)
         {
             DropWeapon();
             playerController.haveWeapon = false;

@@ -70,13 +70,20 @@ public class UIOnItManager : MonoBehaviour
     private void SetInformation()
     {
         ammoUI.color = bulletManager.bulletColor;
-        if(playerController.haveAmmo == true)
+        if (playerController.haveWeapon == true)
         {
-            ammoUI.text = bulletManager.ammo.ToString() + "/" + bulletManager.maxAmmo.ToString();
+            if (playerController.haveAmmo == true)
+            {
+                ammoUI.text = bulletManager.ammo.ToString() + "/" + bulletManager.maxAmmo.ToString();
+            }
+            else
+            {
+                ammoUI.text = "Empty";
+            }
         }
         else
         {
-            ammoUI.text = "Empty";
+            ammoUI.text = "";
         }
         if(combo > 1)
         {

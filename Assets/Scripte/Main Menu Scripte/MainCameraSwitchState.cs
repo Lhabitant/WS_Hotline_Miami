@@ -11,13 +11,15 @@ public class MainCameraSwitchState : MonoBehaviour
     private void OnEnable()
     {
         EventManager.StartListening("SwitchToChapters", Chapters);
-        EventManager.StartListening("SwitchToOptions", Options);
+        EventManager.StartListening("SwitchToInputs", Inputs);
+        EventManager.StartListening("SwitchToSounds", Sounds); 
     }
 
     private void OnDisable()
     {
         EventManager.StopListening("SwitchToChapters", Chapters);
-        EventManager.StopListening("SwitchToOptions", Options);
+        EventManager.StopListening("SwitchToInputs", Inputs);
+        EventManager.StartListening("SwitchToSounds", Sounds);
     }
 
     // Start is called before the first frame update
@@ -47,7 +49,7 @@ public class MainCameraSwitchState : MonoBehaviour
         Debug.Log("chapters");
     }
 
-    private void Options(float obj)
+    private void Inputs(float obj)
     {
         bool state;
         if (obj == 0)
@@ -58,7 +60,22 @@ public class MainCameraSwitchState : MonoBehaviour
         {
             state = true;
         }
-        anim.SetBool("switchToOptions", state);
-        Debug.Log("options");
+        anim.SetBool("switchToInputs", state);
+        Debug.Log("Input options");
+    }
+
+    private void Sounds(float obj)
+    {
+        bool state;
+        if (obj == 0)
+        {
+            state = false;
+        }
+        else
+        {
+            state = true;
+        }
+        anim.SetBool("switchToSounds", state);
+        Debug.Log("Sounds options");
     }
 }
