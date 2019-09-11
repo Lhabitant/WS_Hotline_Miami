@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +27,6 @@ public class VisorController : MonoBehaviour {
 
         transform.position = new Vector3(worldPos.x,worldPos.y,0);
        
-        //Debug.Log("transPos " + transform.position + "bodyPos " + body.position);
+        Debug.Log("transPos " + transform.position + "bodyPos " + body.position);
     }
 }

@@ -35,6 +35,7 @@ public class AudioSubMenu : MonoBehaviour
                 {
                     Debug.Log(button.name);
                     EventManager.TriggerEvent("SwitchToSounds", 0);
+                    EventManager.TriggerEvent("SwitchSoundsDisplay", 0);
                 }
             }
         }

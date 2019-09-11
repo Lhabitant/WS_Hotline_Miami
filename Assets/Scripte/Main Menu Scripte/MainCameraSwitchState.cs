@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class MainCameraSwitchState : MonoBehaviour
 {
-    private Animator anim;
+    public Animator anim;
 
     private void OnEnable()
     {

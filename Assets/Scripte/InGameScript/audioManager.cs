@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class audioManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static audioManager Instance;
+    public AudioSource audioSrc;
+
     public AudioClip explosionSound;
     public AudioClip ShotSound1;
     public AudioClip ShotSound2;
@@ -19,6 +22,8 @@ public class audioManager : MonoBehaviour
     public AudioClip playerHappy2;
     public AudioClip playerHappy3;
 
+    
+
 
     void Awake()
     {
@@ -27,6 +32,7 @@ public class audioManager : MonoBehaviour
             Debug.LogError("Multiple instances of SoundEffectsHelper!");
         }
         Instance = this;
+        audioSrc = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -130,6 +136,8 @@ public class audioManager : MonoBehaviour
 
     private void MakeSound(AudioClip originalClip)
     {
-        AudioSource.PlayClipAtPoint(originalClip, transform.position);
+
+        //AudioSource.PlayClipAtPoint(originalClip, transform.position);
+        audioSrc.PlayOneShot(originalClip);
     }
 }

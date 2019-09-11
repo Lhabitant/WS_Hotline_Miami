@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MouseOnItScript : MonoBehaviour
 {
-    public bool mouseOnIt= false;
-
+    public bool mouseOnIt = false;
     private void OnMouseEnter()
     {
         mouseOnIt = true;

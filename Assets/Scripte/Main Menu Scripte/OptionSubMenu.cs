@@ -74,6 +74,7 @@ public class OptionSubMenu : MonoBehaviour
                 {
                     Debug.Log(button.name);
                     EventManager.TriggerEvent("SwitchToSounds", 1);
+                    EventManager.TriggerEvent("SwitchSoundsDisplay", 1);
                 }
                 else if (button.name == controlGO.name)
                 {
